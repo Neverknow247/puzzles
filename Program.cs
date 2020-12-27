@@ -65,7 +65,12 @@ namespace puzzles
         }
         public static List<string> Names()
         {
-            string temp = "";
+            Random rand = new Random();
+            string pull = "";
+            string pop = "";
+            int num = 0;
+            int count = 1;
+            List<int> randList = new List<int>();
             List<string> finalList = new List<string>();
             List<string> nameList = new List<string>();
             nameList.Add("Todd");
@@ -73,7 +78,22 @@ namespace puzzles
             nameList.Add("Charlie");
             nameList.Add("Geneva");
             nameList.Add("Sydney");
-            
+            pop = nameList[0];
+            while(count < nameList.Count)
+            {
+                // temp = nameList[count];
+                num = rand.Next(1,nameList.Count);
+                if(randList.Contains(num)){}
+                else
+                {
+                    pull = nameList[num];
+                    nameList[num] = pop;
+                    pop = pull;
+                    randList.Add(num);
+                    count++;
+                }
+            }
+            nameList[0] = pop;
             for(int i = 0; i<nameList.Count;i++)
             {
                 if(nameList[i].Length > 5)
